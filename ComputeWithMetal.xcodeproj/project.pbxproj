@@ -14,6 +14,7 @@
 		F9B54E6D1C15881F00AC1440 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9B54E6B1C15881F00AC1440 /* LaunchScreen.storyboard */; };
 		F9B54E781C15882000AC1440 /* ComputeWithMetalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B54E771C15882000AC1440 /* ComputeWithMetalTests.swift */; };
 		F9B54E831C15882000AC1440 /* ComputeWithMetalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B54E821C15882000AC1440 /* ComputeWithMetalUITests.swift */; };
+		F9B54E911C158B2000AC1440 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = F9B54E901C158B2000AC1440 /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		F9B54E7E1C15882000AC1440 /* ComputeWithMetalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComputeWithMetalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B54E821C15882000AC1440 /* ComputeWithMetalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputeWithMetalUITests.swift; sourceTree = "<group>"; };
 		F9B54E841C15882000AC1440 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9B54E901C158B2000AC1440 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				F9B54E691C15881F00AC1440 /* Assets.xcassets */,
 				F9B54E6B1C15881F00AC1440 /* LaunchScreen.storyboard */,
 				F9B54E6E1C15881F00AC1440 /* Info.plist */,
+				F9B54E901C158B2000AC1440 /* Shaders.metal */,
 			);
 			path = ComputeWithMetal;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9B54E911C158B2000AC1440 /* Shaders.metal in Sources */,
 				F9B54E651C15881F00AC1440 /* ViewController.swift in Sources */,
 				F9B54E631C15881F00AC1440 /* AppDelegate.swift in Sources */,
 			);
@@ -484,6 +488,7 @@
 				F9B54E891C15882000AC1440 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F9B54E8A1C15882000AC1440 /* Build configuration list for PBXNativeTarget "ComputeWithMetalTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +497,7 @@
 				F9B54E8C1C15882000AC1440 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F9B54E8D1C15882000AC1440 /* Build configuration list for PBXNativeTarget "ComputeWithMetalUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +506,7 @@
 				F9B54E8F1C15882000AC1440 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
