@@ -11,9 +11,46 @@ import MetalKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
+     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Input data 
+        var myVector = [Float](count:123456, repeatedValue: 0);
+        
+        // Output data 
+        var resultData = [Float](count:123456, repeatedValue: 0);
+        
+        for (index, _) in myVector.enumerate() {
+            myVector[index] = Float(index)
+        }
+        
+        // Initialize Metal 
+        var (device, commandQueue, defaultLibrary, commandBuffer, computeCommandEncoder) = initMetal()
+        
+        // Setting up a compute pipeline with Sigmoid function and add it to encoder 
+        let sigmoidProgram = defaultLibrary.newFunctionWithName("sigmoid")
+        
+     
+        do
+        {
+            var computePipelineFilter = try device.newComputePipelineStateWithFunction(sigmoidProgram!)
+            computeCommandEncoder.setComputePipelineState(computePipelineFilter)
+        } catch _ {
+            print("Failed to create pipeline")
+        }
+        
+        // Create GPU input and output data
+        var myVectorByteLength = myVector.count*sizeofValue(myVector[0])
+        
+        // in-buffer
+        var inVectorBuffer = device.newBufferWithBytes(&myVector, length: myVectorByteLength, options: MTLResourceOptions.CPUCacheModeDefaultCache)
+        computeCommandEncoder.setBuffer(inVectorBuffer, offset: 0, atIndex: 0)
+        
+        // out-buffer
+        var outVectorBuffer = device.newBufferWithBytes(&resultData, length: myVectorByteLength, options: MTLResourceOptions.CPUCacheModeDefaultCache)
+        computeCommandEncoder.setBuffer(outVectorBuffer, offset: 0, atIndex: 1)
+        
+        // Configure GPU Threads
     }
 
     override func didReceiveMemoryWarning() {
