@@ -51,6 +51,20 @@ class ViewController: UIViewController {
         computeCommandEncoder.setBuffer(outVectorBuffer, offset: 0, atIndex: 1)
         
         // Configure GPU Threads
+        // hardcoded to 32 for now (recommendation: read about threadExecutionWidth)
+        var threadsPerGroup = MTLSize(width:32,height:1,depth:1)
+        var numThreadgroups = MTLSize(width:(myVector.count+31)/32, height:1, depth:1)
+        computeCommandEncoder.dispatchThreadgroups(numThreadgroups, threadsPerThreadgroup: threadsPerGroup)
+        
+        // Start processing 
+        computeCommandEncoder.endEncoding()
+        commandBuffer.commit()
+        commandBuffer.waitUntilCompleted()
+        
+        // Get result data out from GPU 
+        var data = NSData(bytesNoCopy: outVectorBuffer.contents(), length: myVector.count*sizeof(Float), freeWhenDone: false)
+        var finalResultArray = [Float](count: myVector.count, repeatedValue: 0)
+        data.getBytes(&finalResultArray, length:myVector.count * sizeof(Float))
     }
 
     override func didReceiveMemoryWarning() {
