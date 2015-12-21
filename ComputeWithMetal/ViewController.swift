@@ -31,9 +31,11 @@ class ViewController: UIViewController {
         let sigmoidProgram = defaultLibrary.newFunctionWithName("sigmoid")
         
      
+        var computePipelineFilter : MTLComputePipelineState;
+        
         do
         {
-            var computePipelineFilter = try device.newComputePipelineStateWithFunction(sigmoidProgram!)
+            computePipelineFilter = try device.newComputePipelineStateWithFunction(sigmoidProgram!)
             computeCommandEncoder.setComputePipelineState(computePipelineFilter)
         } catch _ {
             print("Failed to create pipeline")
